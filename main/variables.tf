@@ -1,5 +1,5 @@
 variable "project_id" {
-  description = "The name of the project"
+  description = "The GCP project ID"
   type        = string
   default     = "my-cloudrun-api"
 }
@@ -16,20 +16,37 @@ variable "zone" {
   default     = "europe-west4-a"
 }
 
+variable "environment" {
+  description = "Deployment environment (e.g. prod, staging)"
+  type        = string
+  default     = "prod"
+}
+
 variable "repository" {
-  description = "The name of the Artifact Registry repository to be created"
+  description = "The name of the Artifact Registry repository"
   type        = string
   default     = "docker-repository"
 }
 
 variable "docker_image" {
-  description = "The name of the Docker image in the Artifact Registry repository to be deployed to Cloud Run"
+  description = "Docker image name in Artifact Registry to deploy. Leave empty to skip Cloud Run deployment."
   type        = string
-  default     = "my-api:0.0.1"
+  default     = ""
 }
 
-variable "first_time" {
-  description = "Boolean flag to indicate if this is the first time the application is running. If so, the cloud run step is omitted"
-  type        = bool
-  default     = false
+variable "min_instances" {
+  description = "Minimum number of Cloud Run instances"
+  type        = number
+  default     = 1
+}
+
+variable "max_instances" {
+  description = "Maximum number of Cloud Run instances"
+  type        = number
+  default     = 3
+}
+
+variable "github_repository" {
+  description = "GitHub repository in owner/repo format (e.g. fpgmaas/cloudrun-example-infra). Used to scope Workload Identity Federation."
+  type        = string
 }
