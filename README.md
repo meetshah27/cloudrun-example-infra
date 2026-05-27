@@ -9,7 +9,7 @@ This is a repository that contains the code used to set up the cloud infrastruct
     - Service Usage Admin
     - Artifact Registry Administrator
     - Cloud Run Admin
-    - Project IAM Admin
+    - Project IAM Admin 
 
 ## 2. Deploying a new version of the infrastructure
 
